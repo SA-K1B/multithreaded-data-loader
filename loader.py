@@ -34,7 +34,7 @@ def fetch_database():
     print("[DB] Querying PostgreSQL database...")
     conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users")  # Modify based on your table structure
+    cursor.execute("SELECT * FROM users") 
     data = cursor.fetchall()
     conn.close()
     print(f"[DB] Retrieved {len(data)} records")
@@ -67,22 +67,20 @@ db_data = future_db.result()
 #  Shutdown the ThreadPoolExecutor
 executor.shutdown()
 
-#  Combine all data into a dictionary
 all_data = {
     "csv_data": csv_data_list,
     "api_data": api_data,
     "db_data": db_data
 }
-# print data got from csv files
+
 
 print("All data from CSV files:")
 for data in all_data["csv_data"]:
     print(data.head())
-# print data got from API
+
 print("All data from API:")
 print(all_data["api_data"])
 
-# print data got from database
 print("All data from database:")
 print(all_data["db_data"])
 

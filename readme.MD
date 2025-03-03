@@ -14,7 +14,7 @@ A CPU-bound task involves intensive computations that fully utilize the processo
 def cpu_bound_task(n):
     total = 0
     for i in range(n):
-        total += i * i  # Heavy computation  # Heavy computation
+        total += i * i  # Heavy computation 
     return total
 
 cpu_bound_task(10**7)
@@ -25,7 +25,7 @@ This example performs a CPU-bound task by calculating the sum of squares of numb
 **I/O-Bound Tasks**: 
 These tasks involve waiting for external resources such as disk I/O, network requests, or database queries. Examples include reading files from disk, making API calls, and querying databases.
 
-### Example
+ **Example**
 
 An I/O-bound task involves waiting for external resources such as file reading, network requests, or database queries.
 
@@ -36,7 +36,7 @@ import requests
 def io_bound_task():
     response = requests.get("https://jsonplaceholder.typicode.com/users")
     return response.json()
-    
+
 io_bound_task()
 ```
 This example makes an API request, which requires waiting for the response. Instead of letting the CPU remain idle, multithreading can be used to perform multiple such requests simultaneously.

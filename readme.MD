@@ -1,23 +1,20 @@
 # Multithreading for Efficient I/O Operations
 
-## Introduction to Multithreading
 
 Modern computing systems perform various types of tasks, which can be broadly categorized into:
 
 **CPU-Bound Tasks**: 
-These tasks require heavy computation and are limited by the processing power of the CPU. Examples include numerical simulations, image processing, and encryption.
+These tasks involve complex calculations that fully engage the CPU. Examples include simulations, image processing, data analysis.
 
 **Example**
 
 A CPU-bound task involves intensive computations that fully utilize the processor.
 ```python
-import time
 
 def cpu_bound_task(n):
-    start = time.time()
-    total = sum(i * i for i in range(n))  # Heavy computation
-    end = time.time()
-    print(f"CPU-bound task completed in {end - start:.2f} seconds")
+    total = 0
+    for i in range(n):
+        total += i * i  # Heavy computation  # Heavy computation
     return total
 
 cpu_bound_task(10**7)
@@ -33,13 +30,13 @@ These tasks involve waiting for external resources such as disk I/O, network req
 An I/O-bound task involves waiting for external resources such as file reading, network requests, or database queries.
 
 ```python
-import time
+
 import requests
 
 def io_bound_task():
     response = requests.get("https://jsonplaceholder.typicode.com/users")
     return response.json()
-
+    
 io_bound_task()
 ```
 This example makes an API request, which requires waiting for the response. Instead of letting the CPU remain idle, multithreading can be used to perform multiple such requests simultaneously.
